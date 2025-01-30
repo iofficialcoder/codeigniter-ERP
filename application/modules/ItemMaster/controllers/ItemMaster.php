@@ -23,6 +23,7 @@ public function addItem() {
     if ($this->form_validation->run()) {
         $data = [
             'item_name' => $this->input->post('user_name'),
+            'item_price' => $this->input->post('item_price'),
         ];
 
         // Handle file upload for item photo
@@ -35,7 +36,7 @@ public function addItem() {
 
             if ($this->upload->do_upload('item_photo')) {
                 $uploadData = $this->upload->data();
-                $data['item_photo'] = $uploadData['file_name'];
+                $data['item_photo'] = 'uploads/items/' .$uploadData['file_name'];
             } else {
                 $this->session->set_flashdata('message', $this->upload->display_errors());
                 redirect('ItemMaster/addItemPage');
@@ -107,7 +108,11 @@ public function updateItem($item_id) {
     $this->form_validation->set_rules('item_name', 'Item Name', 'required');
     
     if ($this->form_validation->run()) {
-        $data = ['item_name' => $this->input->post('item_name')];
+        $data = [
+          'item_name' => $this->input->post('item_name'),
+          'item_price' => $this->input->post('item_price')
+        ];
+
 
         // Check if a new image is uploaded
         if (!empty($_FILES['item_photo']['name'])) {

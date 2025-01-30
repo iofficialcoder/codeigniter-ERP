@@ -10,6 +10,17 @@ class CustomerBill extends MY_Controller
     $this->load->library('form_validation');
   }
 
+  public function getBillDetails($id)
+    {
+        $this->load->model('Customer_Model'); // Load the model
+        $bill = $this->CustomerBillModel->getBillById($id); // Fetch the bill by ID
+        if ($bill) {
+            echo json_encode(['status' => true, 'data' => $bill]);
+        } else {
+            echo json_encode(['status' => false, 'message' => 'Bill not found']);
+        }
+    }
+
   public function create()
   {
     $this->load->model('../../ItemMaster/models/Item_model'); // Load the model

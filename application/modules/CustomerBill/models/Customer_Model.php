@@ -38,7 +38,8 @@
         $this->db->from('customer_bills');
         $this->db->where('id', $bill_id);
         $query = $this->db->get();
-        return $query->row_array();
+        // return $query->row_array();
+        return $this->db->get_where('customer_bills', ['id' => $bill_id])->row_array();
     }
 
     // Update the bill data
@@ -119,5 +120,9 @@
       return $result->result_array();
     }
 
+    
+
   }
+
+  
 ?>

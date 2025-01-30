@@ -20,6 +20,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="item_price">Item Price</label>
+                        <?php echo form_input(['type' => 'number', 'min' => '0.00', 'step' => '0.01', 'name' => 'item_price', 'class' => 'form-control', 'id' => 'item_price', 'placeholder' => 'Enter Item Price']); ?>
+                        <?php echo form_error('item_price', '<div class="text-danger">', '</div>'); ?>
+                    </div>
+
+                    <div class="form-group">
                         <label for="item_photo">Upload Item Photo</label>
                         <?php echo form_input(['type' => 'file', 'name' => 'item_photo', 'class' => 'form-control', 'id' => 'item_photo']); ?>
                         <?php echo form_error('item_photo', '<div class="text-danger">', '</div>'); ?>

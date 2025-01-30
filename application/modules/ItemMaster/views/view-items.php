@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th>Item Name</th>
+                                <th>Item Price</th>
                                 <th>Item Photo</th>
                                 <th>Actions</th>
                             </tr>
@@ -27,6 +28,8 @@
                             <?php foreach ($items as $item): ?>
                             <tr>
                                 <td><?php echo $item['item_name']; ?></td>
+                                <!-- <td><?php echo $item['item_price']; ?></td> -->
+                                <td style="color: green"><?php echo '₹' . number_format($item['item_price'], 2); ?></td>
                                 <td>
                                     <?php if (!empty($item['item_photo'])): ?>
                                     <img style="object-fit: cover;" src="<?php echo base_url($item['item_photo']); ?>"
@@ -42,6 +45,8 @@
                                     <a href="<?php echo site_url('ItemMaster/deleteItem/'.$item['id']); ?>"
                                         class="btn btn-danger"
                                         onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                    <a href="<?php echo site_url('ItemMaster/viewItem/'.$item['id']); ?>"
+                                        class="btn btn-info">View</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
